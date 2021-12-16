@@ -1,9 +1,9 @@
 package loveh.workoutapp
 
 data class ExerciseModel(
-    private var id: Int,
-    private var name: String,
-    private var image: Int,
-    private var isCompleted: Boolean,
-    private var isSelected: Boolean,
+    public var id: Int,
+    public var name: String,
+    public var image: Int,
+    public var isCompleted: Boolean,
+    public var isSelected: Boolean,
 )
