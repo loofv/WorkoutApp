@@ -1,5 +1,7 @@
 package loveh.workoutapp
 
+import android.app.Dialog
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import loveh.workoutapp.databinding.ActivityExerciseBinding
+import loveh.workoutapp.databinding.DialogBackButtonBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -56,6 +59,25 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         exerciseAdapter = ExerciseStatusAdapter(exerciseList!!)
         binding?.rvExerciseStatus?.adapter = exerciseAdapter
+    }
+
+    override fun onBackPressed() {
+        customDialogForBackButton()
+    }
+
+    private fun customDialogForBackButton() {
+        val customDialog = Dialog(this)
+        val dialogBinding = DialogBackButtonBinding.inflate(layoutInflater)
+        customDialog.setContentView(dialogBinding.root)
+        customDialog.setCanceledOnTouchOutside(false)
+        dialogBinding.btnYes.setOnClickListener {
+            this@ExerciseActivity.finish()
+            customDialog.dismiss()
+        }
+        dialogBinding.btnNo.setOnClickListener {
+            customDialog.dismiss()
+        }
+        customDialog.show()
     }
 
     private fun setupRestView() {
@@ -131,7 +153,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 //                    exerciseAdapter!!.notifyDataSetChanged()
                     setupRestView()
                 } else {
-                    Toast.makeText(this@ExerciseActivity, "Exercises finished, well done!", Toast.LENGTH_LONG).show()
+                    finish()
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }.start()

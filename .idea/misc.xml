@@ -10,8 +10,11 @@
         <entry key="app/src/main/res/drawable/item_circular_color_gray_background.xml" value="0.30648148148148147" />
         <entry key="app/src/main/res/drawable/item_circular_thin_color_accent_border.xml" value="0.30648148148148147" />
         <entry key="app/src/main/res/drawable/item_color_accent_border_ripple_background.xml" value="0.5328125" />
+        <entry key="app/src/main/res/layout/activity_calculate_bmi.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_exercise.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_finish.xml" value="0.5171875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_back_button.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_exercise_status.xml" value="0.25" />
       </map>
     </option>

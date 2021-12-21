@@ -3,8 +3,6 @@ package loveh.workoutapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.Toast
 import loveh.workoutapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +14,10 @@ class MainActivity : AppCompatActivity() {
 
         binding?.flStart?.setOnClickListener {
             val intent = Intent(this, ExerciseActivity::class.java)
+            startActivity(intent)
+        }
+        binding?.flBmi?.setOnClickListener {
+            val intent = Intent(this, CalculateBmiActivity::class.java)
             startActivity(intent)
         }
     }
