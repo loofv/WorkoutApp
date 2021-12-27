@@ -27,7 +27,7 @@ class CalculateBmiActivity : AppCompatActivity() {
             if (weightAndHeightHaveValues()) {
                 val weightValue: Float = binding?.etWeight?.text.toString().toFloat()
                 val heightValue: Float = binding?.etHeight?.text.toString().toFloat() / 100
-                val bmi = weightValue / (heightValue * heightValue)
+            val bmi = weightValue / (heightValue * heightValue)
                 binding?.tvBmiResult?.text = bmi.toInt().toString()
                 binding?.tvHeader?.visibility = View.VISIBLE
             } else {

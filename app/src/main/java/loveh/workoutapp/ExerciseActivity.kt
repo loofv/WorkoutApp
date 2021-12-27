@@ -11,7 +11,9 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import loveh.workoutapp.databinding.ActivityExerciseBinding
 import loveh.workoutapp.databinding.DialogBackButtonBinding
 import java.util.*
@@ -117,7 +119,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             }
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity, "Exercise starting", Toast.LENGTH_SHORT).show()
+//                makeText(this@ExerciseActivity, "Exercise starting", Toast.LENGTH_SHORT).show()
                 exerciseList!![currentExerciseIndex].isSelected = true
 //                exerciseAdapter!!.notifyDataSetChanged()
                 exerciseAdapter!!.notifyItemChanged(currentExerciseIndex)
@@ -144,13 +146,14 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             }
             override fun onFinish() {
+                val exerciseDao = (application as ExerciseApp).db.exerciseDao()
+                addExercise(exerciseList!![currentExerciseIndex].name, exerciseDao)
                 if (currentExerciseIndex < exerciseList?.size!! -1) {
                     currentExerciseIndex++
                     exerciseList!![currentExerciseIndex].isSelected = false
                     exerciseList!![currentExerciseIndex].isCompleted = true
-                    // Testa den här, kanske lika bra och mer effektiv?
                     exerciseAdapter!!.notifyItemChanged(currentExerciseIndex)
-//                    exerciseAdapter!!.notifyDataSetChanged()
+
                     setupRestView()
                 } else {
                     finish()
@@ -159,6 +162,15 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
             }
         }.start()
+    }
+
+    private fun addExercise(exerciseName: String, exerciseDao: ExerciseDao) {
+        if (exerciseName.isNotEmpty()) {
+            lifecycleScope.launch {
+                exerciseDao.insert(ExerciseEntity(name = exerciseName))
+                Toast.makeText(this@ExerciseActivity, "Exercise added to history db.", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     override fun onDestroy() {

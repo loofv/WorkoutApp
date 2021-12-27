@@ -13,8 +13,10 @@
         <entry key="app/src/main/res/layout/activity_calculate_bmi.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_exercise.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_finish.xml" value="0.5171875" />
+        <entry key="app/src/main/res/layout/activity_history.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_back_button.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_exercise.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_exercise_status.xml" value="0.25" />
       </map>
     </option>

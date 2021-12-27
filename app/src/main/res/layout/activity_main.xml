@@ -36,9 +36,9 @@
     <FrameLayout
         android:id="@+id/flBmi"
         app:layout_constraintTop_toBottomOf="@+id/flStart"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/flStart"
+        app:layout_constraintEnd_toStartOf="@id/flStart"
         android:background="@drawable/item_circular_color_accent_background"
         android:layout_marginTop="20dp"
         android:layout_width="100dp"
@@ -58,13 +58,46 @@
         android:layout_height="wrap_content"
         android:text="Calculate BMI"
         android:layout_gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/flBmi"
+        app:layout_constraintStart_toStartOf="@id/flBmi"
+        app:layout_constraintEnd_toEndOf="@id/flBmi"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
         android:textSize="@dimen/default_button_text_size"
         android:textStyle="bold"
         />
 
+    <FrameLayout
+        android:id="@+id/flHistory"
+        app:layout_constraintTop_toBottomOf="@+id/flStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/flStart"
+        app:layout_constraintEnd_toEndOf="@id/flStart"
+        android:background="@drawable/item_circular_color_accent_background"
+        android:layout_marginTop="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="History"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_button_text_size"
+            android:textStyle="bold"
+            />
+    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/flHistory"
+        app:layout_constraintStart_toStartOf="@id/flHistory"
+        app:layout_constraintEnd_toEndOf="@id/flHistory"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_button_text_size"
+        android:textStyle="bold"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

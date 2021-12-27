@@ -3,8 +3,10 @@ package loveh.workoutapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.coroutines.InternalCoroutinesApi
 import loveh.workoutapp.databinding.ActivityMainBinding
 
+@InternalCoroutinesApi
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding?.flBmi?.setOnClickListener {
             val intent = Intent(this, CalculateBmiActivity::class.java)
+            startActivity(intent)
+        }
+        binding?.flHistory?.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
             startActivity(intent)
         }
     }
